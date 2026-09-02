@@ -32,7 +32,7 @@ body{font-family:Inter,system-ui,sans-serif;color:#1f2430;background:var(--ui);}
 .sec{margin-bottom:20px;}
 .sec h3{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;}
 label{display:block;font-size:12px;color:#5a6270;margin:9px 0 4px;font-weight:500;}
-input[type=text],input[type=number],textarea,select{width:100%;font:inherit;font-size:13px;border:1px solid #d7dbe2;border-radius:7px;padding:8px 11px;color:#1f2430;background:#fff;}
+input[type=text],input[type=number],input[type=email],input[type=password],textarea,select{width:100%;font:inherit;font-size:13px;border:1px solid #d7dbe2;border-radius:7px;padding:8px 11px;color:#1f2430;background:#fff;}
 textarea{resize:vertical;min-height:64px;line-height:1.5;}
 input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -65,7 +65,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
 .kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}
 .kcard .cli{font-weight:700;font-size:13.5px;}
 .kcard .sub{font-size:11px;color:#8a94a3;margin-top:2px;}
-.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
 .kcard .ka{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
 .mini{font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:600;}
 .mini.load{border-color:var(--navy);color:var(--navy);}
@@ -143,8 +143,9 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
   .d-mosaic{height:340px;}
 }
 @media(max-width:1100px){.wrap{grid-template-columns:1fr;height:auto;}.preview-pane{padding:14px;}.doc{width:100%;}.kanban{grid-template-columns:1fr 1fr;}}
-.of{font-family:Georgia,"Times New Roman",serif;color:#111;font-size:12.5pt;line-height:1.6;padding:0;}.of-head{text-align:center;border-bottom:2px solid #1C2E4A;padding-bottom:10px;margin-bottom:26px;}.of-marca{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Poiret One',sans-serif;font-size:26px;letter-spacing:6px;color:#1C2E4A;}.of-sub{font-family:Inter,sans-serif;font-size:9pt;letter-spacing:2px;text-transform:uppercase;color:#666;margin-top:4px;}.of-num{font-weight:bold;margin-bottom:18px;}.of-data{text-align:right;margin-bottom:26px;}.of-dest{margin-bottom:20px;line-height:1.5;}.of-assunto{margin-bottom:22px;}.of-corpo p{margin:0 0 13px;text-align:justify;}.of-tab{width:100%;border-collapse:collapse;margin:16px 0 14px;font-size:11pt;}.of-tab th,.of-tab td{border:1px solid #999;padding:7px 9px;text-align:left;}.of-tab th{background:#eef0f4;font-size:10pt;}.of-tab td.c{text-align:center;}.of-tab td.r,.of-tab th.r{text-align:right;}.of-tab tr.tot td{font-weight:bold;background:#f6f7f9;}.of-nota{font-size:10.5pt;font-style:italic;}.of-anexo{margin-top:40px;padding-top:22px;border-top:1px solid #bbb;page-break-inside:auto;}.of-anexo-t{font-weight:bold;font-size:11.5pt;letter-spacing:.5px;margin-bottom:16px;text-align:center;}.of-menu{margin-bottom:18px;page-break-inside:avoid;}.of-menu-t{font-weight:bold;font-size:11.5pt;border-bottom:1px solid #ccc;padding-bottom:4px;margin-bottom:8px;}.of-menu-l{margin:0;padding-left:20px;columns:2;column-gap:26px;}.of-menu-l li{font-size:10.5pt;line-height:1.55;break-inside:avoid;-webkit-column-break-inside:avoid;}.of-ass{margin-top:46px;text-align:center;}.of-linha{width:260px;border-top:1px solid #333;margin:0 auto 6px;}.of-nome{font-weight:bold;}.of-cargo{font-size:10.5pt;}.of-cnpj{font-size:9.5pt;color:#555;margin-top:3px;}</style></head>
-<body>
+.of{font-family:Georgia,"Times New Roman",serif;color:#111;font-size:12.5pt;line-height:1.6;padding:0;}.of-head{text-align:center;border-bottom:2px solid #1C2E4A;padding-bottom:10px;margin-bottom:26px;}.of-marca{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Poiret One',sans-serif;font-size:26px;letter-spacing:6px;color:#1C2E4A;}.of-sub{font-family:Inter,sans-serif;font-size:9pt;letter-spacing:2px;text-transform:uppercase;color:#666;margin-top:4px;}.of-num{font-weight:bold;margin-bottom:18px;}.of-data{text-align:right;margin-bottom:26px;}.of-dest{margin-bottom:20px;line-height:1.5;}.of-assunto{margin-bottom:22px;}.of-corpo p{margin:0 0 13px;text-align:justify;}.of-tab{width:100%;border-collapse:collapse;margin:16px 0 14px;font-size:11pt;}.of-tab th,.of-tab td{border:1px solid #999;padding:7px 9px;text-align:left;}.of-tab th{background:#eef0f4;font-size:10pt;}.of-tab td.c{text-align:center;}.of-tab td.r,.of-tab th.r{text-align:right;}.of-tab tr.tot td{font-weight:bold;background:#f6f7f9;}.of-nota{font-size:10.5pt;font-style:italic;}.of-anexo{margin-top:40px;padding-top:22px;border-top:1px solid #bbb;page-break-inside:auto;}.of-anexo-t{font-weight:bold;font-size:11.5pt;letter-spacing:.5px;margin-bottom:16px;text-align:center;}.of-menu{margin-bottom:18px;page-break-inside:avoid;}.of-menu-t{font-weight:bold;font-size:11.5pt;border-bottom:1px solid #ccc;padding-bottom:4px;margin-bottom:8px;}.of-menu-l{margin:0;padding-left:20px;columns:2;column-gap:26px;}.of-menu-l li{font-size:10.5pt;line-height:1.55;break-inside:avoid;-webkit-column-break-inside:avoid;}.of-ass{margin-top:46px;text-align:center;}.of-linha{width:260px;border-top:1px solid #333;margin:0 auto 6px;}.of-nome{font-weight:bold;}.of-cargo{font-size:10.5pt;}.of-cnpj{font-size:9.5pt;color:#555;margin-top:3px;}body.locked .topbar,body.locked .view,body.locked .toast{display:none !important;}.gate{position:fixed;inset:0;z-index:999;background:#1C2E4A;display:none;align-items:center;justify-content:center;padding:20px;}body.locked .gate{display:flex;}.gate-box{width:100%;max-width:360px;text-align:center;color:#F4F1EA;}.gate-logo{margin-bottom:18px;}.gate-mark{font-family:'Poiret One',sans-serif;font-size:34px;letter-spacing:8px;color:#fff;}.gate-sub{font-size:9.5px;letter-spacing:3px;text-transform:uppercase;color:#D8B784;margin-top:4px;}.gate-form{margin-top:26px;text-align:left;}.gate-form label{color:#aab6c8;font-size:11.5px;letter-spacing:.5px;}.gate-form input{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);color:#fff;}.gate-form input:focus{border-color:#D8B784;}.gate-btn{width:100%;margin-top:16px;background:#9A6F30;color:#fff;border:none;border-radius:7px;padding:11px;font:inherit;font-weight:600;font-size:13.5px;cursor:pointer;}.gate-btn:hover{background:#7f5b26;}.gate-btn[disabled]{opacity:.6;cursor:wait;}.gate-err{margin-top:12px;font-size:12.5px;color:#ffb4a8;min-height:16px;}@media print{.gate{display:none !important;}}</style></head>
+<body class="locked">
+<div class="gate" id="gate"><div class="gate-box"><div class="gate-logo"><svg width="56" height="56" viewBox="-40 -40 80 80" xmlns="http://www.w3.org/2000/svg"><circle r="34" fill="none" stroke="#F4F1EA" stroke-width="2.6"/><circle r="27" fill="none" stroke="#F4F1EA" stroke-width="0.8" opacity=".3"/><g transform="rotate(40)"><path d="M0 -25 L5.2 3 L0 7.4 L-5.2 3 Z" fill="#9A6F30"/><path d="M0 7.4 L3.4 24 L-3.4 24 Z" fill="#8fa0b8"/></g><g transform="rotate(-28)"><ellipse rx="5.4" ry="7.4" fill="#F4F1EA"/><path d="M0 -6.6 Q1.8 0 0 6.6" stroke="#1C2E4A" stroke-width="1.2" fill="none"/></g></svg></div><div class="gate-mark">MAP</div><div class="gate-sub">Central de Propostas</div><div class="gate-form"><label>E-mail</label><input type="email" id="gMail" autocomplete="username"><label style="margin-top:10px">Senha</label><input type="password" id="gPass" autocomplete="current-password" onkeydown="if(event.key==='Enter')gateLogin()"><button class="gate-btn" id="gBtn" onclick="gateLogin()">Entrar</button><div class="gate-err" id="gErr"></div></div></div></div>
 <div class="topbar">
   <div style="display:flex;align-items:center;gap:22px;">
     <div class="brand" style="display:flex;align-items:center;gap:10px"><svg class="maplogo" width="30" height="30" viewBox="-40 -40 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle r="34" fill="none" stroke="#F4F1EA" stroke-width="2.6"/><circle r="27" fill="none" stroke="#F4F1EA" stroke-width="0.8" opacity=".3"/><g transform="rotate(40)"><path d="M0 -25 L5.2 3 L0 7.4 L-5.2 3 Z" fill="#9A6F30"/><path d="M0 7.4 L3.4 24 L-3.4 24 Z" fill="#8fa0b8"/></g><g transform="rotate(-28)"><ellipse rx="5.4" ry="7.4" fill="#F4F1EA"/><path d="M0 -6.6 Q1.8 0 0 6.6" stroke="#1C2E4A" stroke-width="1.2" fill="none"/></g></svg><span>MAP<small>Central de Propostas</small></span></div>
@@ -161,7 +162,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
     <button class="btn ghost" onclick="openSup()">Fornecedores IA</button>
     <button class="btn ghost" onclick="salvar()">Salvar</button>
     <button class="btn primary" onclick="exportPDF()">Exportar PDF</button>
-    <button class="btn ghost" title="Configurações" onclick="openConfig()">&#9881;</button>
+    <button class="btn ghost" title="Configurações" onclick="openConfig()">&#9881;</button><button class="btn ghost" title="Sair" onclick="sbLogout()">Sair</button>
   </div>
 </div>
 
@@ -219,7 +220,7 @@ function obsFor(loc){return OBS_BASE+"\nValores válidos para "+(loc||"São Paul
 const DEF_OBS=obsFor("São Paulo");
 let S={}, IMG=null;
 
-function blank(){return {id:null,ref:"EVT-"+new Date().toISOString().slice(5,10).replace("-",""),status:"Lead",cliente:"",empresa:"",contato:"",data:"",pessoas:30,dias:1,perDay:false,days:[],cnpj:"",docModo:"comercial",oficioNum:"001",cargo:"",local:"São Paulo",formato:"Corporativo",intro:DEF_INTRO,fotos:true,cond:DEF_COND,obs:obsFor("São Paulo"),notas:"Teto de compra (20% margem): Básico R$ 43 · Intermediário R$ 62 · Premium R$ 93.",extra:"",svc:{coffee:{on:false,lvls:["ess"]},brunch:{on:false,lvls:["cla"]},coquetel:{on:false,lvls:["cla"]}}};}
+function blank(){return {id:null,ref:"EVT-"+new Date().toISOString().slice(5,10).replace("-",""),status:"Lead",cliente:"",empresa:"",contato:"",data:"",pessoas:30,dias:1,perDay:false,days:[],cnpj:"",email:"",segmento:"",primeiraCompra:"",tipoDemanda:"Evento pontual",pessoaId:"",docModo:"comercial",oficioNum:"001",cargo:"",local:"São Paulo",formato:"Corporativo",intro:DEF_INTRO,fotos:true,cond:DEF_COND,obs:obsFor("São Paulo"),notas:"Teto de compra (20% margem): Básico R$ 43 · Intermediário R$ 62 · Premium R$ 93.",extra:"",svc:{coffee:{on:false,lvls:["ess"]},brunch:{on:false,lvls:["cla"]},coquetel:{on:false,lvls:["cla"]}}};}
 function money(n){return "R$ "+Math.round(n).toLocaleString("pt-BR");}
 function el(id){return document.getElementById(id);}
 function stripGreeting(t,nome){if(!t)return t;var orig=t.trim();var x=orig;
@@ -248,13 +249,27 @@ function buildForm(){
   }).join("");
   el("form").innerHTML=`
   <div class="sec"><h3>Formato do documento</h3><div style="display:flex;gap:8px"><button class="btn ${S.docModo!=="oficio"?"primary":"soft"}" style="flex:1" onclick="setDoc('comercial')">Comercial</button><button class="btn ${S.docModo==="oficio"?"primary":"soft"}" style="flex:1" onclick="setDoc('oficio')">Ofício</button></div><div class="hint">Ofício: formato formal, para compras, licitação e processos internos.</div>${S.docModo==="oficio"?`<div class="row2"><div><label>Nº do ofício</label><input type="text" value="${esc(S.oficioNum||"")}" oninput="upd('oficioNum',this.value)"></div><div><label>Cargo do contato</label><input type="text" placeholder="Coordenadora de Eventos" value="${esc(S.cargo||"")}" oninput="upd('cargo',this.value)"></div></div>`:""}</div>
-  <div class="sec"><h3>Cliente</h3>
+  <div class="sec"><h3>Pessoa</h3>
     <label>Nome do contato</label><input type="text" value="${esc(S.cliente)}" oninput="upd('cliente',this.value)">
-    <div class="row2"><div><label>Empresa</label><input type="text" value="${esc(S.empresa)}" oninput="upd('empresa',this.value)"></div><div><label>WhatsApp</label><input type="text" value="${esc(S.contato)}" oninput="upd('contato',this.value)"></div></div><label>CNPJ do cliente (opcional)</label><input type="text" placeholder="00.000.000/0001-00" value="${esc(S.cnpj||"")}" oninput="upd('cnpj',this.value)">
+    <div class="row2"><div><label>Empresa</label><input type="text" value="${esc(S.empresa)}" oninput="upd('empresa',this.value)"></div><div><label>WhatsApp</label><input type="text" value="${esc(S.contato)}" oninput="upd('contato',this.value)"></div></div>
+    <div class="row2"><div><label>E-mail</label><input type="text" value="${esc(S.email||"")}" oninput="upd('email',this.value)"></div><div><label>CNPJ</label><input type="text" placeholder="00.000.000/0001-00" value="${esc(S.cnpj||"")}" oninput="upd('cnpj',this.value)"></div></div>
+    <label>Segmento</label><input type="text" placeholder="Ex.: saúde, indústria, educação" value="${esc(S.segmento||"")}" oninput="upd('segmento',this.value)">
   </div>
-  <div class="sec"><h3>Evento <span style="font-weight:400;color:#94a0af;text-transform:none;letter-spacing:0">${esc(S.ref)}</span></h3>
+  <div class="sec"><h3>Qualificação</h3>
+    <div class="row2">
+      <div><label>É a primeira compra?</label><select onchange="upd('primeiraCompra',this.value)">
+        <option value="" ${!S.primeiraCompra?'selected':''}>Não sei</option>
+        <option ${S.primeiraCompra==='Sim'?'selected':''}>Sim</option>
+        <option ${S.primeiraCompra==='Não'?'selected':''}>Não</option></select></div>
+      <div><label>Tipo de demanda</label><select onchange="upd('tipoDemanda',this.value)">
+        <option ${S.tipoDemanda==='Evento pontual'?'selected':''}>Evento pontual</option>
+        <option ${S.tipoDemanda==='Demanda recorrente'?'selected':''}>Demanda recorrente</option>
+        <option ${S.tipoDemanda==='Licitação'?'selected':''}>Licitação</option></select></div>
+    </div>
+  </div>
+  <div class="sec"><h3>Negócio <span style="font-weight:400;color:#94a0af;text-transform:none;letter-spacing:0">${esc(S.ref)}</span></h3>
     <label>Data</label><input type="text" placeholder="13 de agosto de 2026" value="${esc(S.data)}" oninput="upd('data',this.value)">
-    <div class="row2"><div><label>Nº de pessoas</label><input type="number" min="1" value="${S.pessoas}" oninput="upd('pessoas',parseInt(this.value)||0)"></div><div><label>Dias de evento</label><input type="number" min="1" value="${S.dias||1}" oninput="upd('dias',parseInt(this.value)||1)"></div></div><label>Local</label><input type="text" value="${esc(S.local)}" oninput="upd('local',this.value)">
+    <div class="row2"><div><label>Nº de pessoas</label><input type="number" min="1" value="${S.pessoas}" oninput="upd('pessoas',parseInt(this.value)||0)"></div><div><label>Dias de evento</label><input type="number" min="1" value="${S.dias||1}" oninput="upd('dias',parseInt(this.value)||1)"></div></div><label>Cidade de entrega</label><input type="text" value="${esc(S.local)}" oninput="upd('local',this.value)">
     <label>Formato</label><input type="text" value="${esc(S.formato)}" oninput="upd('formato',this.value)">
   </div>
   <div class="sec"><h3>Abertura</h3><textarea oninput="upd('intro',this.value)">${esc(S.intro)}</textarea></div>
@@ -409,7 +424,7 @@ async function analisar(){
   try{
     const prompt=`Você é o assistente comercial da MAP, consultoria de alimentação para eventos corporativos em São Paulo, do Matheus Prado.
 Analise o pedido do cliente abaixo (texto e/ou imagem de conversa) e devolva SOMENTE um JSON válido, sem markdown, sem comentários, neste formato:
-{"cliente":"nome do contato ou vazio","empresa":"ou vazio","contato":"telefone/whats ou vazio","data":"data do evento por extenso em pt-BR ou vazio","pessoas":numero ou 0,"dias":numero de dias do evento (1 se nao mencionado),"local":"cidade/região ou vazio","formato":"Corporativo/Confraternização/etc","servicos":[{"tipo":"coffee|brunch|coquetel","nivel":"id do nível"}],"extra":"serviços fora do catálogo, ex: barraquinha de cachorro-quente, ou vazio","intro":"abertura curta da proposta. REGRAS: no maximo 3 frases e 45 palavras; NAO cumprimente nem cite o nome do cliente; NAO repita data, cidade nem numero de pessoas (ja aparecem no cabecalho); NAO descreva o documento (nada de 'incluo abaixo as opcoes, valores e condicoes'); NAO explique por que escolheu um nivel nem diga que faltou informacao; escreva em primeira pessoa do singular (montei, pensei, caprichei), nunca nos/nossa equipe/ficamos felizes; diga o que voce montou e uma nota de personalizacao ligada ao pedido ou ao publico, e termine dizendo que e um ponto de partida ajustavel; SEM travessao. Exemplo do tom: Montei o coffee break dos dois dias com um cardapio variado, pensando em quem fica o dia inteiro em treinamento. Nada aqui e engessado: ajustamos itens e quantidades ate ficar com a cara do seu evento.","observacoes":"pontos a confirmar com o cliente, ou vazio"}
+{"cliente":"nome do contato ou vazio","empresa":"ou vazio","contato":"telefone/whats ou vazio","data":"data do evento por extenso em pt-BR ou vazio","email":"ou vazio","segmento":"segmento da empresa ou vazio","tipo_demanda":"Evento pontual|Demanda recorrente|Licitação","pessoas":numero ou 0,"dias":numero de dias do evento (1 se nao mencionado),"local":"cidade/região ou vazio","formato":"Corporativo/Confraternização/etc","servicos":[{"tipo":"coffee|brunch|coquetel","nivel":"id do nível"}],"extra":"serviços fora do catálogo, ex: barraquinha de cachorro-quente, ou vazio","intro":"abertura curta da proposta. REGRAS: no maximo 3 frases e 45 palavras; NAO cumprimente nem cite o nome do cliente; NAO repita data, cidade nem numero de pessoas (ja aparecem no cabecalho); NAO descreva o documento (nada de 'incluo abaixo as opcoes, valores e condicoes'); NAO explique por que escolheu um nivel nem diga que faltou informacao; escreva em primeira pessoa do singular (montei, pensei, caprichei), nunca nos/nossa equipe/ficamos felizes; diga o que voce montou e uma nota de personalizacao ligada ao pedido ou ao publico, e termine dizendo que e um ponto de partida ajustavel; SEM travessao. Exemplo do tom: Montei o coffee break dos dois dias com um cardapio variado, pensando em quem fica o dia inteiro em treinamento. Nada aqui e engessado: ajustamos itens e quantidades ate ficar com a cara do seu evento.","observacoes":"pontos a confirmar com o cliente, ou vazio"}
 Níveis válidos: coffee: ess (Essencial R$150), comp (Completo R$180), prem (Premium R$220). brunch: cla (Clássico R$240), prem (Premium R$280). coquetel: cla (Clássico R$215), prem (Premium R$270).
 Escolha o nível pelo tom do pedido (básico/meio termo -> mais baixo; sofisticado/diretoria -> mais alto). Se o cliente pedir algo que não é coffee/brunch/coquetel, NÃO invente: coloque em "extra".
 Pedido do cliente:
@@ -420,7 +435,7 @@ ${txt||"(somente imagem)"}`;
     const out=await callClaude(content,false,1500);
     const clean=out.replace(/```json|```/g,"").trim();
     const j=JSON.parse(clean.slice(clean.indexOf("{"),clean.lastIndexOf("}")+1));
-    if(j.cliente)S.cliente=j.cliente; if(j.empresa)S.empresa=j.empresa; if(j.contato)S.contato=j.contato;
+    if(j.cliente)S.cliente=j.cliente; if(j.empresa)S.empresa=j.empresa; if(j.contato)S.contato=j.contato; if(j.email)S.email=j.email; if(j.segmento)S.segmento=j.segmento; if(j.tipo_demanda)S.tipoDemanda=j.tipo_demanda;
     if(j.data)S.data=j.data; if(j.pessoas)S.pessoas=j.pessoas; if(j.dias)S.dias=j.dias; if(j.local){const pv=S.local; if(S.obs===obsFor(pv))S.obs=obsFor(j.local); S.local=j.local;} if(j.formato)S.formato=j.formato;
     if(j.intro)S.intro=stripGreeting(j.intro,j.cliente||S.cliente); if(j.extra)S.extra=j.extra;
     Object.keys(S.svc).forEach(k=>S.svc[k].on=false);
@@ -535,7 +550,9 @@ async function doLogin(){
 function saveCfg(){localStorage.setItem("map_apikey",el("cfgKey").value.trim());const u=el("cfgUrl"),k=el("cfgSb");if(u)localStorage.setItem("map_sb_url",u.value.trim());if(k)localStorage.setItem("map_sb_key",k.value.trim());closeModal();toast("Configuração salva");}
 
 /* ==================== SUPABASE / NUVEM ==================== */
-function cfgGet(k){return localStorage.getItem(k)||"";}
+const SB_DEFAULT_URL="https://dbpivxsjjxqncdzwajox.supabase.co";
+const SB_DEFAULT_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRicGl2eHNqanhxbmNkendham94Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0MDkxNDcsImV4cCI6MjA5Nzk4NTE0N30.v6hnHrU4N8j8BOs6RQak6DVIIj2RaIpY3mnycESWRcU";
+function cfgGet(k){var v=localStorage.getItem(k);if(v)return v;if(k==="map_sb_url")return SB_DEFAULT_URL;if(k==="map_sb_key")return SB_DEFAULT_KEY;return "";}
 function sbUrl(){return cfgGet("map_sb_url").replace(/\/+$/,"");}
 function sbKey(){return cfgGet("map_sb_key");}
 function sbTok(){return cfgGet("map_sb_token");}
@@ -553,9 +570,9 @@ async function sbLogin(email,senha){
   if(d.refresh_token)localStorage.setItem("map_sb_refresh",d.refresh_token);
   return true;
 }
-function sbLogout(){localStorage.removeItem("map_sb_token");localStorage.removeItem("map_sb_refresh");toast("Desconectado da nuvem");renderKanban();}
+function sbLogout(){localStorage.removeItem("map_sb_token");localStorage.removeItem("map_sb_refresh");lock();}
 
-function recRow(r){return {id:r.id,cliente:r.cliente||"",empresa:r.empresa||"",contato:r.contato||"",cnpj:r.cnpj||"",
+function recRow(r){return {id:r.id,pessoa_id:r.pessoaId||null,cliente:r.cliente||"",empresa:r.empresa||"",contato:r.contato||"",email:r.email||"",telefone:r.contato||"",cnpj:r.cnpj||"",segmento:r.segmento||"",primeira_compra:r.primeiraCompra||null,tipo_demanda:r.tipoDemanda||null,cidade_entrega:r.local||"",lead_id:r._leadUuid||null,
   data_evento:r.data||"",pessoas:r.pessoas||0,dias:r.dias||1,local:r.local||"",status:r.status||"Lead",
   total:r.total||0,payload:r};}
 
@@ -622,13 +639,43 @@ async function sincronizar(silencioso){
 function leadParaProposta(id){
   var l=LEADS.find(function(x){return x.id===id;}); if(!l)return;
   S=blank();
-  S.cliente=l.nome||""; S.empresa=l.empresa||""; S.contato=l.contato||"";
+  S.cliente=l.nome||""; S.empresa=l.empresa||""; S.contato=l.telefone||l.contato||"";
+  S.email=l.email||""; if(l.data_evento)S.data=l.data_evento; if(l.pessoas)S.pessoas=l.pessoas;
+  if(l.cidade)S.local=l.cidade; if(l.evento)S.tipoDemanda=(/recorrente/i.test(l.evento)?"Demanda recorrente":"Evento pontual");
+  S._leadUuid=l.id;
   var txt=[l.evento,l.mensagem].filter(Boolean).join(". ");
   S.notas=(S.notas?S.notas+"\n":"")+"Lead do site: "+txt;
   buildForm(); render(); go("gerador");
   var ai=el("aiInput"); if(ai)ai.value=txt;
   S._leadId=id;
   toast("Lead carregado. Clique em Analisar para preencher.");
+}
+
+
+/* ---------- PORTÃO DE ENTRADA ---------- */
+function lock(){document.body.classList.add("locked");}
+function unlock(){document.body.classList.remove("locked");}
+async function gateLogin(){
+  var b=el("gBtn"), e=el("gErr");
+  var mail=el("gMail").value.trim(), pass=el("gPass").value;
+  if(!mail||!pass){e.textContent="Preencha e-mail e senha.";return;}
+  b.disabled=true; b.innerHTML='<span class="spin"></span>Entrando...'; e.textContent="";
+  try{
+    await sbLogin(mail,pass);
+    unlock(); buildForm(); render(); await sincronizar(true);
+    toast("Bem-vindo de volta");
+  }catch(err){
+    e.textContent = /invalid/i.test(err.message)?"E-mail ou senha incorretos.":err.message;
+    b.disabled=false; b.textContent="Entrar";
+  }
+}
+async function checarSessao(){
+  if(!sbTok()){lock();return false;}
+  try{
+    var r=await fetch(sbUrl()+"/rest/v1/map_propostas?select=id&limit=1",{headers:sbHeaders(true)});
+    if(r.status===401||r.status===403){localStorage.removeItem("map_sb_token");lock();return false;}
+    unlock(); return true;
+  }catch(e){ unlock(); return true; }   // sem internet: libera o uso local
 }
 
 /* ---------- CRM ---------- */
@@ -643,7 +690,7 @@ function salvar(){
 }
 function novo(){S=blank();IMG=null;el("aiInput").value="";clearImg();buildForm();render();toast("Nova proposta");}
 function dup(){if(!S.cliente){toast("Nada para duplicar");return;}S=JSON.parse(JSON.stringify(S));S.id=null;S.ref=blank().ref;S.status="Lead";buildForm();render();toast("Duplicada. Salve para criar novo registro.");}
-function loadRec(id){const r=all().find(x=>x.id===id); if(!r)return; S=JSON.parse(JSON.stringify(r)); if(!S.svc)S.svc=blank().svc; if(!S.dias)S.dias=1; if(S.perDay)syncDays(); Object.keys(S.svc).forEach(k=>{if(!S.svc[k].lvls)S.svc[k].lvls=[S.svc[k].lvl||CATALOG[k].levels[0].id];}); buildForm(); render(); go('gerador'); toast("Carregada no gerador");}
+function loadRec(id){const r=all().find(x=>x.id===id); if(!r)return; S=JSON.parse(JSON.stringify(r)); if(!S.svc)S.svc=blank().svc; if(!S.dias)S.dias=1; if(!S.tipoDemanda)S.tipoDemanda="Evento pontual"; if(S.email===undefined)S.email=""; if(S.perDay)syncDays(); Object.keys(S.svc).forEach(k=>{if(!S.svc[k].lvls)S.svc[k].lvls=[S.svc[k].lvl||CATALOG[k].levels[0].id];}); buildForm(); render(); go('gerador'); toast("Carregada no gerador");}
 function delRec(id){if(!confirm("Excluir esta proposta?"))return; persist(all().filter(x=>x.id!==id)); cloudDelete(id); renderKanban();}
 function setStage(id,v){const a=all();const r=a.find(x=>x.id===id);if(r){r.status=v;r.updated=Date.now();persist(a);cloudPush(r);renderKanban();if(S.id===id)S.status=v;}}
 function renderKanban(){
@@ -652,10 +699,10 @@ function renderKanban(){
   el("kanban").innerHTML=STAGES.map(st=>{
     const cards=a.filter(r=>r.status===st).sort((x,y)=>y.updated-x.updated);
     const sum=cards.reduce((t,r)=>t+(r.total||0),0);
-    const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard" style="border-left:3px solid #9A6F30;background:#fdfaf4"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.evento?"\u00b7 "+esc(l.evento):""}</div>${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
+    const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard" style="border-left:3px solid #9A6F30;background:#fdfaf4"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.data_evento?"\u00b7 "+esc(l.data_evento):""} ${l.pessoas?"\u00b7 "+l.pessoas+" pax":""}</div>${(l.utm_source||l.cidade)?`<div class="tags">${l.cidade?`<span class="tg">${esc(l.cidade)}</span>`:""}${l.utm_source?`<span class="tg tg-new">${esc(l.utm_source)}</span>`:""}</div>`:""}${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
     const html=leadsHTML+cards.map(r=>`<div class="kcard" draggable="true" ondragstart="drag(event,'${r.id}')">
       <div class="cli">${esc(r.cliente)||"Sem nome"}</div>
-      <div class="sub">${esc(r.empresa||"")} ${r.data?"\u00b7 "+esc(r.data):""} ${r.pessoas?"\u00b7 "+r.pessoas+" pax":""}${(r.dias||1)>1?" \u00b7 "+r.dias+" dias":""}</div>
+      <div class="sub">${esc(r.empresa||"")} ${r.data?"\u00b7 "+esc(r.data):""} ${r.pessoas?"\u00b7 "+r.pessoas+" pax":""}${(r.dias||1)>1?" \u00b7 "+r.dias+" dias":""}</div>${(r.tipoDemanda||r.primeiraCompra||r.local)?`<div class="tags">${r.tipoDemanda?`<span class="tg">${esc(r.tipoDemanda)}</span>`:""}${r.primeiraCompra==="Sim"?`<span class="tg tg-new">1ª compra</span>`:""}${r.local?`<span class="tg">${esc(r.local)}</span>`:""}</div>`:""}
       <div class="tot">${money(r.total||0)}</div>
       <div class="ka"><button class="mini load" onclick="loadRec('${r.id}')">Abrir</button>${r.contato?`<button class="mini" onclick="waQuick('${r.id}')">WhatsApp</button>`:""}<button class="mini del" onclick="delRec('${r.id}')">Excluir</button></div>
     </div>`).join("");
@@ -669,6 +716,8 @@ function backup(){const blob=new Blob([JSON.stringify({propostas:all(),precos:JS
 function restore(inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const j=JSON.parse(rd.result);const arr=Array.isArray(j)?j:j.propostas;if(Array.isArray(arr)){persist(arr);if(j.precos)localStorage.setItem("map_precos",JSON.stringify(j.precos));loadPrecos();buildForm();renderKanban();toast("Backup importado");}}catch(e){alert("Arquivo inválido");}};rd.readAsText(f);}
 
 /* init */
-loadPrecos(); S=blank(); buildForm(); render(); if(cloudOn())sincronizar(true);
+loadPrecos(); S=blank(); buildForm(); render();
+checkSessionThen();
+async function checkSessionThen(){const ok=await checarSessao(); if(ok&&cloudOn())sincronizar(true);}
 </script>
 </body></html>
