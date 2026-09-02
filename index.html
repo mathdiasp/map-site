@@ -228,7 +228,7 @@
   .howx__wrap{max-width:760px;}
   @media(max-width:900px){ .about__grid{grid-template-columns:1fr;gap:40px;} .about__figure{max-width:420px;} }
 .hero__title,.brand,.brand__ph,.foot__brand,.problem__q,.step__n,.step__t,.card__k,.card__t,.menu__name,.ledger__num{font-weight:400 !important;}
-.nav .brand{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;line-height:1;text-decoration:none;}.nav .brand__ph{font-family:var(--display);font-weight:400;font-size:1.55rem;color:var(--ink);letter-spacing:.01em;}.nav .brand__tagline{font-family:var(--body);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-top:6px;white-space:nowrap;}.about__sign{margin-top:24px;font-family:var(--display);font-size:1.4rem;color:var(--ink);}.about__role{margin-top:4px;font-size:.9rem;color:var(--ink-soft);letter-spacing:.01em;}.hero__media{position:relative;}.hero__media::after{content:"";position:absolute;right:-18px;bottom:-18px;width:58%;height:52%;background:#1C2E4A;border-radius:6px;z-index:0;}.carousel{position:relative;z-index:1;border-radius:6px;overflow:hidden;box-shadow:0 26px 60px -34px rgba(20,34,56,.6);aspect-ratio:4/5;background:#0e1622;}.cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease;}.cimg.is-active{opacity:1;}.cdots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:2;}.cdot{width:7px;height:7px;border-radius:50%;background:rgba(246,242,234,.55);cursor:pointer;transition:background .3s,transform .3s;}.cdot.is-active{background:var(--brass);transform:scale(1.25);}@media(max-width:900px){.hero__media{margin-top:34px;max-width:520px;}}.nav .brand{flex-direction:row;align-items:center;gap:11px;}.brand__txt{display:flex;flex-direction:column;align-items:flex-start;}.maplogo{flex:none;display:block;}</style>
+.nav .brand{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;line-height:1;text-decoration:none;}.nav .brand__ph{font-family:var(--display);font-weight:400;font-size:1.55rem;color:var(--ink);letter-spacing:.01em;}.nav .brand__tagline{font-family:var(--body);font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-top:6px;white-space:nowrap;}.about__sign{margin-top:24px;font-family:var(--display);font-size:1.4rem;color:var(--ink);}.about__role{margin-top:4px;font-size:.9rem;color:var(--ink-soft);letter-spacing:.01em;}.hero__media{position:relative;}.hero__media::after{content:"";position:absolute;right:-18px;bottom:-18px;width:58%;height:52%;background:#1C2E4A;border-radius:6px;z-index:0;}.carousel{position:relative;z-index:1;border-radius:6px;overflow:hidden;box-shadow:0 26px 60px -34px rgba(20,34,56,.6);aspect-ratio:4/5;background:#0e1622;}.cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease;}.cimg.is-active{opacity:1;}.cdots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:8px;z-index:2;}.cdot{width:7px;height:7px;border-radius:50%;background:rgba(246,242,234,.55);cursor:pointer;transition:background .3s,transform .3s;}.cdot.is-active{background:var(--brass);transform:scale(1.25);}@media(max-width:900px){.hero__media{margin-top:34px;max-width:520px;}}.nav .brand{flex-direction:row;align-items:center;gap:11px;}.brand__txt{display:flex;flex-direction:column;align-items:flex-start;}.maplogo{flex:none;display:block;}.field2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.form select{width:100%;font:inherit;font-size:.95rem;padding:11px 13px;border-radius:8px;border:1px solid rgba(246,242,234,.22);background:rgba(255,255,255,.06);color:#F4F1EA;appearance:none;}.form select:focus{outline:none;border-color:var(--brass);}.form select option{color:#1f2430;}.form input[type=date]{color-scheme:dark;}@media(max-width:560px){.field2{grid-template-columns:1fr;}}</style>
 </head>
 <body>
 
@@ -346,10 +346,11 @@
         <p class="final__proof"><span class="stars">★★★★★</span> Nota 4,9 no Google e NPS 93 de quem já contratou.</p>
       </div>
       <div class="form rv">
-        <div class="field"><label for="f-nome">Seu nome</label><input id="f-nome" type="text" placeholder="Como podemos te chamar" /></div>
-        <div class="field"><label for="f-empresa">Empresa</label><input id="f-empresa" type="text" placeholder="Nome da empresa" /></div>
-        <div class="field"><label for="f-evento">Evento e data</label><input id="f-evento" type="text" placeholder="Ex.: convenção, 120 pessoas, 15/08" /></div>
-        <div class="field"><label for="f-msg">O que você precisa</label><textarea id="f-msg" placeholder="Conta um pouco do que você imagina"></textarea></div>
+        <div class="field2"><div class="field"><label for="f-nome">Seu nome</label><input id="f-nome" type="text" placeholder="Como podemos te chamar" /></div><div class="field"><label for="f-empresa">Empresa</label><input id="f-empresa" type="text" placeholder="Nome da empresa" /></div></div>
+        <div class="field2"><div class="field"><label for="f-email">E-mail</label><input id="f-email" type="email" placeholder="voce@empresa.com.br" /></div><div class="field"><label for="f-tel">WhatsApp</label><input id="f-tel" type="tel" placeholder="(11) 99999-9999" /></div></div>
+        <div class="field2"><div class="field"><label for="f-data">Data do evento</label><input id="f-data" type="date" /></div><div class="field"><label for="f-pax">Nº de pessoas</label><input id="f-pax" type="number" min="1" placeholder="80" /></div></div>
+        <div class="field2"><div class="field"><label for="f-cidade">Cidade</label><input id="f-cidade" type="text" placeholder="São Paulo" /></div><div class="field"><label for="f-tipo">Tipo</label><select id="f-tipo"><option value="">Selecione</option><option>Evento pontual</option><option>Demanda recorrente</option><option>Ainda não sei</option></select></div></div>
+        <div class="field"><label for="f-msg">Conte sobre o seu evento</label><textarea id="f-msg" placeholder="Coffee break, brunch, coquetel? Horários, formato, preferências, restrições..."></textarea></div>
         <button class="btn" id="waForm" type="button">Enviar pelo WhatsApp <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         <p class="form__hint">Abre o WhatsApp com sua mensagem pronta. Resposta em até 1 dia útil.</p>
       </div>
@@ -403,26 +404,59 @@
     window.open(waLink("Olá! Tenho um evento corporativo chegando e queria descrever pra receber uma proposta."), "_blank");
   });
 
-  document.getElementById("waForm").addEventListener("click", function(){
-    var btn  = this;
-    var nome = document.getElementById("f-nome").value.trim();
-    var emp  = document.getElementById("f-empresa").value.trim();
-    var ev   = document.getElementById("f-evento").value.trim();
-    var msg  = document.getElementById("f-msg").value.trim();
-    var t = "Olá! Quero uma proposta de alimentação para evento.\n\n";
-    if(nome) t += "Nome: " + nome + "\n";
-    if(emp)  t += "Empresa: " + emp + "\n";
-    if(ev)   t += "Evento e data: " + ev + "\n";
-    if(msg)  t += "Detalhes: " + msg + "\n";
+  function utm(){
+    var q = new URLSearchParams(location.search), o = {};
+    ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"].forEach(function(k){
+      var v = q.get(k) || sessionStorage.getItem("map_"+k);
+      if(v){ o[k]=v; try{sessionStorage.setItem("map_"+k,v);}catch(e){} }
+    });
+    o.referrer = document.referrer || null;
+    o.pagina = location.pathname + location.search;
+    return o;
+  }
+  function dataBR(iso){
+    if(!iso) return "";
+    var p = iso.split("-"); if(p.length!==3) return iso;
+    var meses=["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+    return parseInt(p[2],10)+" de "+meses[parseInt(p[1],10)-1]+" de "+p[0];
+  }
 
-    // grava o lead antes de abrir o WhatsApp (não bloqueia se falhar)
+  document.getElementById("waForm").addEventListener("click", function(){
+    var btn = this;
+    var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
+    var nome=v("f-nome"), emp=v("f-empresa"), email=v("f-email"), tel=v("f-tel");
+    var dataISO=v("f-data"), pax=v("f-pax"), cidade=v("f-cidade"), tipo=v("f-tipo"), msg=v("f-msg");
+    var dataTxt = dataBR(dataISO);
+
+    if(!nome || (!tel && !email)){
+      alert("Preencha seu nome e ao menos um contato (WhatsApp ou e-mail).");
+      return;
+    }
+
+    var t = "Olá! Quero uma proposta de alimentação para evento.\n\n";
+    if(nome)    t += "Nome: " + nome + "\n";
+    if(emp)     t += "Empresa: " + emp + "\n";
+    if(email)   t += "E-mail: " + email + "\n";
+    if(dataTxt) t += "Data do evento: " + dataTxt + "\n";
+    if(pax)     t += "Pessoas: " + pax + "\n";
+    if(cidade)  t += "Cidade: " + cidade + "\n";
+    if(tipo)    t += "Tipo: " + tipo + "\n";
+    if(msg)     t += "\nSobre o evento: " + msg + "\n";
+
+    var lead = {
+      nome: nome, empresa: emp, email: email, telefone: tel, contato: tel || email,
+      data_evento: dataTxt, pessoas: pax ? parseInt(pax,10) : null,
+      cidade: cidade, evento: tipo, mensagem: msg, origem: "site"
+    };
+    var u = utm();
+    for(var k in u){ if(u[k]) lead[k] = u[k]; }
+
     btn.disabled = true;
-    var win = window.open("", "_blank");   // abre já, para o navegador não bloquear
-    salvarLead({ nome: nome, empresa: emp, evento: ev, mensagem: msg, origem: "site" })
-      .then(function(){
-        if(win) win.location = waLink(t); else window.open(waLink(t), "_blank");
-        btn.disabled = false;
-      });
+    var win = window.open("", "_blank");
+    salvarLead(lead).then(function(){
+      if(win) win.location = waLink(t); else window.open(waLink(t), "_blank");
+      btn.disabled = false;
+    });
   });
 
   // ---- Reveal on scroll ----
