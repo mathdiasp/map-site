@@ -65,7 +65,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
 .kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}
 .kcard .cli{font-weight:700;font-size:13.5px;}
 .kcard .sub{font-size:11px;color:#8a94a3;margin-top:2px;}
-.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
+.lead-card{cursor:pointer;transition:box-shadow .15s;}.lead-card:hover{box-shadow:0 3px 12px rgba(154,111,48,.22);}.lcontato{font-size:11px;color:#6c7686;margin-top:5px;word-break:break-all;}.lead-ficha .lrow{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid #f0f1f4;font-size:13px;}.lead-ficha .lrow.col{flex-direction:column;gap:5px;}.lead-ficha .lk{min-width:120px;color:#8a94a3;font-size:12px;}.lead-ficha .lv{color:#1f2430;font-weight:500;word-break:break-word;}.lead-ficha .lmsg{background:#f7f8fa;border:1px solid #eceef2;border-radius:8px;padding:10px 12px;line-height:1.6;color:#33405c;white-space:pre-wrap;}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
 .kcard .ka{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
 .mini{font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:600;}
 .mini.load{border-color:var(--navy);color:var(--navy);}
@@ -636,6 +636,34 @@ async function sincronizar(silencioso){
   }catch(e){ if(!silencioso)alert("Erro ao sincronizar: "+e.message); }
 }
 
+
+function leadModal(id){
+  var l=LEADS.find(function(x){return x.id===id;}); if(!l)return;
+  function lin(rot,val,extra){ if(!val)return ""; return '<div class="lrow"><span class="lk">'+rot+'</span><span class="lv">'+esc(String(val))+(extra||"")+'</span></div>'; }
+  var tel=(l.telefone||l.contato||"").replace(/\D/g,"");
+  var quando=l.criado_em?new Date(l.criado_em).toLocaleString("pt-BR"):"";
+  var utmTxt=[l.utm_source,l.utm_medium,l.utm_campaign].filter(Boolean).join(" / ");
+  var body='<div class="lead-ficha">'
+    +lin("Nome",l.nome)
+    +lin("Empresa",l.empresa)
+    +lin("E-mail",l.email)
+    +lin("WhatsApp",l.telefone||l.contato)
+    +lin("Data do evento",l.data_evento)
+    +lin("Pessoas",l.pessoas)
+    +lin("Cidade",l.cidade)
+    +lin("Tipo",l.evento)
+    +(l.mensagem?'<div class="lrow col"><span class="lk">Sobre o evento</span><div class="lmsg">'+esc(l.mensagem)+'</div></div>':"")
+    +lin("Origem",utmTxt||l.origem)
+    +lin("Página",l.pagina)
+    +lin("Recebido em",quando)
+    +'</div>';
+  openModal("Lead do site", body);
+  el("mFoot").innerHTML=
+    '<button class="btn soft" onclick="leadDescartar(\''+id+'\');closeModal()">Descartar</button>'
+    +(l.email?'<button class="btn soft" onclick="window.open(\'mailto:'+(l.email||"")+'\')">E-mail</button>':"")
+    +(tel?'<button class="btn soft" onclick="window.open(\'https://wa.me/55'+tel.replace(/^55/,"")+'\',\'_blank\')">WhatsApp</button>':"")
+    +'<button class="btn primary" onclick="leadParaProposta(\''+id+'\');closeModal()">Criar proposta</button>';
+}
 function leadParaProposta(id){
   var l=LEADS.find(function(x){return x.id===id;}); if(!l)return;
   S=blank();
@@ -699,7 +727,7 @@ function renderKanban(){
   el("kanban").innerHTML=STAGES.map(st=>{
     const cards=a.filter(r=>r.status===st).sort((x,y)=>y.updated-x.updated);
     const sum=cards.reduce((t,r)=>t+(r.total||0),0);
-    const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard" style="border-left:3px solid #9A6F30;background:#fdfaf4"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.data_evento?"\u00b7 "+esc(l.data_evento):""} ${l.pessoas?"\u00b7 "+l.pessoas+" pax":""}</div>${(l.utm_source||l.cidade)?`<div class="tags">${l.cidade?`<span class="tg">${esc(l.cidade)}</span>`:""}${l.utm_source?`<span class="tg tg-new">${esc(l.utm_source)}</span>`:""}</div>`:""}${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
+    const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard lead-card" style="border-left:3px solid #9A6F30;background:#fdfaf4" onclick="leadModal('${l.id}')" title="Ver ficha do lead"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.data_evento?"\u00b7 "+esc(l.data_evento):""} ${l.pessoas?"\u00b7 "+l.pessoas+" pax":""}</div>${(l.email||l.telefone||l.contato)?`<div class="lcontato">${l.telefone||l.contato?esc(l.telefone||l.contato):""}${(l.telefone||l.contato)&&l.email?" \u00b7 ":""}${l.email?esc(l.email):""}</div>`:""}${(l.utm_source||l.cidade)?`<div class="tags">${l.cidade?`<span class="tg">${esc(l.cidade)}</span>`:""}${l.utm_source?`<span class="tg tg-new">${esc(l.utm_source)}</span>`:""}</div>`:""}${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka" onclick="event.stopPropagation()"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
     const html=leadsHTML+cards.map(r=>`<div class="kcard" draggable="true" ondragstart="drag(event,'${r.id}')">
       <div class="cli">${esc(r.cliente)||"Sem nome"}</div>
       <div class="sub">${esc(r.empresa||"")} ${r.data?"\u00b7 "+esc(r.data):""} ${r.pessoas?"\u00b7 "+r.pessoas+" pax":""}${(r.dias||1)>1?" \u00b7 "+r.dias+" dias":""}</div>${(r.tipoDemanda||r.primeiraCompra||r.local)?`<div class="tags">${r.tipoDemanda?`<span class="tg">${esc(r.tipoDemanda)}</span>`:""}${r.primeiraCompra==="Sim"?`<span class="tg tg-new">1ª compra</span>`:""}${r.local?`<span class="tg">${esc(r.local)}</span>`:""}</div>`:""}
