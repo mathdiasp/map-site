@@ -14,7 +14,7 @@ body{font-family:Inter,system-ui,sans-serif;color:#1f2430;background:var(--ui);}
 .tabs{display:flex;gap:6px;}
 .tab{font-size:13px;font-weight:600;color:#c9d2df;background:transparent;border:none;padding:8px 14px;border-radius:7px;cursor:pointer;}
 .tab.on{background:rgba(255,255,255,.14);color:#fff;}
-.tb-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.tb-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}.btn.icon{padding:8px 11px;font-size:14px;line-height:1;}.menu-wrap{position:relative;}.menu-drop{position:absolute;top:calc(100% + 6px);right:0;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:9px;box-shadow:0 10px 30px -10px rgba(15,23,42,.35);padding:6px;display:none;z-index:40;}.menu-drop.on{display:block;}.menu-drop button{display:block;width:100%;text-align:left;font:inherit;font-size:13px;color:#33405c;background:none;border:none;padding:9px 11px;border-radius:6px;cursor:pointer;}.menu-drop button:hover{background:#f4f5f7;color:var(--navy);}.menu-sep{height:1px;background:var(--line);margin:5px 6px;}
 .btn{font:inherit;font-size:12.5px;font-weight:600;border:none;border-radius:7px;padding:8px 13px;cursor:pointer;transition:.15s;}
 .btn.primary{background:var(--brass);color:#fff;}
 .btn.primary:hover{background:#7f5b26;}
@@ -62,10 +62,10 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
 .kcol{background:#e9ecf1;border-radius:10px;padding:10px;min-height:200px;}
 .kcol h4{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5a6270;display:flex;justify-content:space-between;margin:2px 4px 10px;}
 .kcol h4 .sum{color:var(--navy);}
-.kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}
+.kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}.kcard:active{cursor:grabbing;}.kcard.dragging{opacity:.45;}.kmove{width:100%;margin-top:9px;font-size:11.5px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fbfcfd;color:#33405c;font-weight:600;cursor:pointer;}.kmove:hover{border-color:var(--brass);}
 .kcard .cli{font-weight:700;font-size:13.5px;}
 .kcard .sub{font-size:11px;color:#8a94a3;margin-top:2px;}
-.lead-card{cursor:pointer;transition:box-shadow .15s;}.lead-card:hover{box-shadow:0 3px 12px rgba(154,111,48,.22);}.lcontato{font-size:11px;color:#6c7686;margin-top:5px;word-break:break-all;}.lead-ficha .lrow{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid #f0f1f4;font-size:13px;}.lead-ficha .lrow.col{flex-direction:column;gap:5px;}.lead-ficha .lk{min-width:120px;color:#8a94a3;font-size:12px;}.lead-ficha .lv{color:#1f2430;font-weight:500;word-break:break-word;}.lead-ficha .lmsg{background:#f7f8fa;border:1px solid #eceef2;border-radius:8px;padding:10px 12px;line-height:1.6;color:#33405c;white-space:pre-wrap;}.motivos{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.mot{font:inherit;font-size:12.5px;font-weight:600;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;color:#33405c;}.mot:hover{border-color:var(--brass);background:#fbf7f0;}.fup{margin-top:7px;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:20px;display:inline-block;}.fup.atrasado{background:#fde8e6;color:#b44;}.fup.hoje{background:#fbf1e2;color:#9A6F30;}.fup.futuro{background:#eef0f4;color:#5a6270;}.perda{margin-top:7px;font-size:10.5px;color:#b44;font-style:italic;}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
+.lead-card{cursor:pointer;transition:box-shadow .15s;}.lead-card:hover{box-shadow:0 3px 12px rgba(154,111,48,.22);}.lcontato{font-size:11px;color:#6c7686;margin-top:5px;word-break:break-all;}.lead-ficha .lrow{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid #f0f1f4;font-size:13px;}.lead-ficha .lrow.col{flex-direction:column;gap:5px;}.lead-ficha .lk{min-width:120px;color:#8a94a3;font-size:12px;}.lead-ficha .lv{color:#1f2430;font-weight:500;word-break:break-word;}.lead-ficha .lmsg{background:#f7f8fa;border:1px solid #eceef2;border-radius:8px;padding:10px 12px;line-height:1.6;color:#33405c;white-space:pre-wrap;}.mopt{border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:10px;}.mopt.atual{border-color:var(--brass);background:#fbf7f0;}.mopt-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px;}.mopt-h span{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#9A6F30;font-weight:600;}.mopt-t{font-size:12.5px;line-height:1.6;color:#4a5261;background:#f7f8fa;border-radius:7px;padding:10px 12px;margin-bottom:8px;white-space:pre-wrap;}.motivos{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.mot{font:inherit;font-size:12.5px;font-weight:600;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;color:#33405c;}.mot:hover{border-color:var(--brass);background:#fbf7f0;}.fup{margin-top:7px;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:20px;display:inline-block;}.fup.atrasado{background:#fde8e6;color:#b44;}.fup.hoje{background:#fbf1e2;color:#9A6F30;}.fup.futuro{background:#eef0f4;color:#5a6270;}.perda{margin-top:7px;font-size:10.5px;color:#b44;font-style:italic;}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
 .kcard .ka{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
 .mini{font-size:11px;padding:5px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;cursor:pointer;font-weight:600;}
 .mini.load{border-color:var(--navy);color:var(--navy);}
@@ -156,13 +156,20 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
   </div>
   <div class="tb-actions">
     <button class="btn ghost" onclick="novo()">Nova</button>
-    <button class="btn ghost" onclick="dup()">Duplicar</button>
-    <button class="btn ghost" onclick="genMsg()">Mensagem cliente</button>
-    <button class="btn ghost" onclick="genBrief()">Briefing fornecedor</button>
-    <button class="btn ghost" onclick="openSup()">Fornecedores IA</button>
+    <div class="menu-wrap">
+      <button class="btn ghost" onclick="toggleMenu(event)">Gerar &#9662;</button>
+      <div class="menu-drop" id="menuGerar">
+        <button onclick="fecharMenu();genMsg()">Mensagem para o cliente</button>
+        <button onclick="fecharMenu();genBrief()">Briefing para fornecedor</button>
+        <button onclick="fecharMenu();openSup()">Buscar fornecedores com IA</button>
+        <div class="menu-sep"></div>
+        <button onclick="fecharMenu();dup()">Duplicar proposta</button>
+      </div>
+    </div>
     <button class="btn ghost" onclick="salvar()">Salvar</button>
     <button class="btn primary" onclick="exportPDF()">Exportar PDF</button>
-    <button class="btn ghost" title="Configurações" onclick="openConfig()">&#9881;</button><button class="btn ghost" title="Sair" onclick="sbLogout()">Sair</button>
+    <button class="btn icon" title="Configurações" onclick="openConfig()">&#9881;</button>
+    <button class="btn icon" title="Sair" onclick="sbLogout()">&#8677;</button>
   </div>
 </div>
 
@@ -192,7 +199,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
       <div class="crm-linha1">
         <div class="crm-titulo"><h2>Funil</h2><span class="hint" id="crmResumo"></span></div>
         <div class="crm-acoes">
-          <button class="btn primary" onclick="sincronizar()">Sincronizar</button>
+          <button class="btn primary" onclick="sincronizar()">Sincronizar</button><button class="btn soft" onclick="agendarTodos()">Aplicar régua</button>
           <button class="btn soft" onclick="backup()">Backup</button>
           <button class="btn soft" onclick="document.getElementById('impFile').click()">Importar</button>
           <input type="file" id="impFile" accept=".json" style="display:none" onchange="restore(this)">
@@ -261,6 +268,9 @@ if(!x.trim())return orig;
 return x.charAt(0).toUpperCase()+x.slice(1);}
 function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
 function toast(m){const t=el("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+function toggleMenu(e){e.stopPropagation();var m=el("menuGerar");m.classList.toggle("on");}
+function fecharMenu(){var m=el("menuGerar");if(m)m.classList.remove("on");}
+document.addEventListener("click",function(){fecharMenu();});
 function go(v){["gerador","crm","rel"].forEach(x=>{el("view-"+x).classList.toggle("on",x===v);el("tab-"+x).classList.toggle("on",x===v);});if(v==="crm")renderKanban(); if(v==="rel")abrirRel();}
 
 /* ---------- FORM ---------- */
@@ -848,6 +858,76 @@ function renderRel(){
 }
 async function abrirRel(){ if(cloudOn())LEADS_TODOS=await cloudLeadsTodos(); renderRel(); }
 
+/* ==================== RÉGUA DE FOLLOW-UP ==================== */
+var REGUA={
+  "Lead":[
+    {dias:0, rot:"Primeiro contato", msg:"Oi {nome}, tudo bem? Aqui é o Matheus, da MAP. Recebi o seu pedido sobre o evento{data}. Posso te mandar uma proposta com as opções de cardápio e valores?"},
+    {dias:2, rot:"Retomada", msg:"Oi {nome}, passando aqui de novo sobre o evento{data}. Consigo montar a proposta hoje mesmo, é rápido. Me confirma o número de pessoas e o horário?"},
+    {dias:7, rot:"Última tentativa", msg:"Oi {nome}, tudo certo? Só pra não deixar passar: se o evento{data} ainda estiver de pé, é só me chamar que eu monto a proposta na hora."}
+  ],
+  "Proposta enviada":[
+    {dias:2, rot:"Confirmar recebimento", msg:"Oi {nome}, você chegou a ver a proposta que enviei? Qualquer ajuste de cardápio ou quantidade eu faço rapidinho."},
+    {dias:5, rot:"Oferecer ajuste", msg:"Oi {nome}, tudo bem? Se algo na proposta não fechou, me diz o que precisa mudar. Dá pra ajustar itens, quantidade ou trocar de nível de cardápio."},
+    {dias:10, rot:"Reservar a data", msg:"Oi {nome}, a data do seu evento está chegando. Quer que eu segure a agenda? Depois de {prazo} não consigo garantir a disponibilidade."},
+    {dias:20, rot:"Encerrar ou adiar", msg:"Oi {nome}, vou considerar esse evento como adiado por enquanto. Se voltar a andar, é só me chamar que eu retomo de onde paramos."}
+  ],
+  "Fechado":[
+    {dias:1, rot:"Pós-evento", msg:"Oi {nome}, como foi o evento? Queria muito saber o que o pessoal achou da comida, o retorno me ajuda a acertar ainda mais na próxima."},
+    {dias:90, rot:"Recorrência", msg:"Oi {nome}, tudo bem? Faz um tempo do último evento. Tem algo no radar por aí? Consigo repetir o formato ou montar algo diferente."}
+  ]
+};
+function reguaSugestao(rec){
+  var etapas=REGUA[rec.status]; if(!etapas)return null;
+  var base=rec.updated||Date.now();
+  var passados=Math.floor((Date.now()-base)/86400000);
+  for(var i=0;i<etapas.length;i++){ if(passados<=etapas[i].dias) return {etapa:etapas[i], base:base}; }
+  return {etapa:etapas[etapas.length-1], base:base};
+}
+function aplicarRegua(id){
+  var a=all(), r=a.find(function(x){return x.id===id;}); if(!r)return;
+  var s=reguaSugestao(r); if(!s){toast("Sem régua para este estágio");return;}
+  var d=new Date((r.updated||Date.now())+s.etapa.dias*86400000);
+  if(d<new Date()) d=new Date(Date.now()+86400000);
+  r.proximoContato=d.toISOString().slice(0,10);
+  r.followNota=s.etapa.rot;
+  r.updated=Date.now();
+  persist(a); cloudPush(r); renderKanban();
+  toast("Follow-up agendado: "+s.etapa.rot+" em "+r.proximoContato.split("-").reverse().slice(0,2).join("/"));
+}
+function msgFollow(id){
+  var r=all().find(function(x){return x.id===id;}); if(!r)return;
+  var s=reguaSugestao(r);
+  var etapas=REGUA[r.status]||[];
+  function monta(e){
+    return e.msg.replace(/\{nome\}/g,(r.cliente||"").split(" ")[0]||"tudo bem")
+                .replace(/\{data\}/g, r.data?(" do dia "+r.data):"")
+                .replace(/\{prazo\}/g,"uma semana");
+  }
+  var opcoes=etapas.map(function(e,i){
+    var atual=s&&s.etapa===e;
+    return '<div class="mopt'+(atual?' atual':'')+'"><div class="mopt-h"><b>'+e.rot+'</b><span>'+(atual?'sugerido agora':'D+'+e.dias)+'</span></div>'
+      +'<div class="mopt-t">'+esc(monta(e))+'</div>'
+      +'<button class="mini load" onclick="copiarMsg('+i+')">Copiar</button></div>';
+  }).join("");
+  window._msgs=etapas.map(monta);
+  openModal("Régua de follow-up · "+(r.cliente||""),
+    '<div class="hint" style="margin-bottom:12px">Estágio atual: <b>'+r.status+'</b>. As mensagens seguem a cadência do estágio, contando a partir da última movimentação.</div>'+opcoes);
+  el("mFoot").innerHTML='<button class="btn soft" onclick="closeModal()">Fechar</button><button class="btn primary" onclick="aplicarRegua(\''+id+'\');closeModal()">Agendar próximo contato</button>';
+}
+function copiarMsg(i){ navigator.clipboard.writeText((window._msgs||[])[i]||"").then(function(){toast("Mensagem copiada");}); }
+function agendarTodos(){
+  var a=all(), n=0;
+  a.forEach(function(r){
+    if(r.status==="Perdido"||r.proximoContato) return;
+    var s=reguaSugestao(r); if(!s)return;
+    var d=new Date((r.updated||Date.now())+s.etapa.dias*86400000);
+    if(d<new Date()) d=new Date(Date.now()+86400000);
+    r.proximoContato=d.toISOString().slice(0,10); r.followNota=s.etapa.rot; n++; cloudPush(r);
+  });
+  persist(a); renderKanban();
+  toast(n?("Régua aplicada a "+n+" negócio(s)"):"Todos já tinham follow-up agendado");
+}
+
 /* ---------- CRM ---------- */
 function all(){try{return JSON.parse(localStorage.getItem("map_propostas")||"[]");}catch(e){return [];}}
 function persist(a){localStorage.setItem("map_propostas",JSON.stringify(a));}
@@ -907,17 +987,19 @@ function renderKanban(){
     const cards=a.filter(r=>r.status===st).sort((x,y)=>y.updated-x.updated);
     const sum=cards.reduce((t,r)=>t+(r.total||0),0);
     const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard lead-card" style="border-left:3px solid #9A6F30;background:#fdfaf4" onclick="leadModal('${l.id}')" title="Ver ficha do lead"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.data_evento?"\u00b7 "+esc(l.data_evento):""} ${l.pessoas?"\u00b7 "+l.pessoas+" pax":""}</div>${(l.email||l.telefone||l.contato)?`<div class="lcontato">${l.telefone||l.contato?esc(l.telefone||l.contato):""}${(l.telefone||l.contato)&&l.email?" \u00b7 ":""}${l.email?esc(l.email):""}</div>`:""}${(l.utm_source||l.cidade)?`<div class="tags">${l.cidade?`<span class="tg">${esc(l.cidade)}</span>`:""}${l.utm_source?`<span class="tg tg-new">${esc(l.utm_source)}</span>`:""}</div>`:""}${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka" onclick="event.stopPropagation()"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
-    const html=leadsHTML+cards.map(r=>`<div class="kcard" draggable="true" ondragstart="drag(event,'${r.id}')">
+    const html=leadsHTML+cards.map(r=>`<div class="kcard" draggable="true" ondragstart="drag(event,'${r.id}')" ondragend="dragEnd(event)">
       <div class="cli">${esc(r.cliente)||"Sem nome"}</div>
       <div class="sub">${esc(r.empresa||"")} ${r.data?"\u00b7 "+esc(r.data):""} ${r.pessoas?"\u00b7 "+r.pessoas+" pax":""}${(r.dias||1)>1?" \u00b7 "+r.dias+" dias":""}</div>${(r.tipoDemanda||r.primeiraCompra||r.local)?`<div class="tags">${r.tipoDemanda?`<span class="tg">${esc(r.tipoDemanda)}</span>`:""}${r.primeiraCompra==="Sim"?`<span class="tg tg-new">1ª compra</span>`:""}${r.local?`<span class="tg">${esc(r.local)}</span>`:""}</div>`:""}
       <div class="tot">${money(r.total||0)}</div>${r.proximoContato&&r.status!=="Fechado"&&r.status!=="Perdido"?`<div class="fup ${fupClasse(r.proximoContato)}">${fupTexto(r.proximoContato)}</div>`:""}${r.status==="Perdido"&&r.motivoPerda?`<div class="perda">${esc(r.motivoPerda)}</div>`:""}
-      <div class="ka"><button class="mini load" onclick="loadRec('${r.id}')">Abrir</button>${r.contato?`<button class="mini" onclick="waQuick('${r.id}')">WhatsApp</button>`:""}<button class="mini del" onclick="delRec('${r.id}')">Excluir</button></div>
+      <select class="kmove" onclick="event.stopPropagation()" onchange="setStage('${r.id}',this.value)">${STAGES.map(x=>`<option ${r.status===x?'selected':''}>${x}</option>`).join("")}</select><div class="ka"><button class="mini load" onclick="loadRec('${r.id}')">Abrir</button><button class="mini" onclick="msgFollow('${r.id}')">Follow-up</button>${r.contato?`<button class="mini" onclick="waQuick('${r.id}')">WhatsApp</button>`:""}<button class="mini del" onclick="delRec('${r.id}')">Excluir</button></div>
     </div>`).join("");
-    return `<div class="kcol" ondragover="event.preventDefault();this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="drop(event,'${st}');this.classList.remove('dragover')"><h4>${st} <span class="sum">${cards.length+(st==="Lead"?LEADS.length:0)} \u00b7 ${money(sum)}</span></h4>${html||'<div class="hint" style="padding:6px">vazio</div>'}</div>`;
+    return `<div class="kcol" ondragenter="event.preventDefault()" ondragover="event.preventDefault();event.dataTransfer.dropEffect='move';this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="drop(event,'${st}');this.classList.remove('dragover')"><h4>${st} <span class="sum">${cards.length+(st==="Lead"?LEADS.length:0)} \u00b7 ${money(sum)}</span></h4>${html||'<div class="hint" style="padding:6px">vazio</div>'}</div>`;
   }).join("");
 }
-function drag(ev,id){ev.dataTransfer.setData("text/plain",id);}
-function drop(ev,st){ev.preventDefault();const id=ev.dataTransfer.getData("text/plain");if(id)setStage(id,st);}
+var DRAG_ID=null;
+function drag(ev,id){DRAG_ID=id;try{ev.dataTransfer.setData("text/plain",id);ev.dataTransfer.effectAllowed="move";}catch(e){}if(ev.currentTarget&&ev.currentTarget.classList)ev.currentTarget.classList.add("dragging");}
+function dragEnd(ev){DRAG_ID=null;if(ev.currentTarget&&ev.currentTarget.classList)ev.currentTarget.classList.remove("dragging");document.querySelectorAll(".kcol").forEach(function(c){c.classList.remove("dragover");});}
+function drop(ev,st){ev.preventDefault();ev.stopPropagation();var id="";try{id=ev.dataTransfer.getData("text/plain");}catch(e){}if(!id)id=DRAG_ID;DRAG_ID=null;if(id)setStage(id,st);}
 function waQuick(id){const r=all().find(x=>x.id===id);if(!r||!r.contato)return;const d=r.contato.replace(/\D/g,"");window.open("https://wa.me/55"+d.replace(/^55/,""),"_blank");}
 function backup(){const blob=new Blob([JSON.stringify({propostas:all(),precos:JSON.parse(localStorage.getItem("map_precos")||"{}")},null,2)],{type:"application/json"});const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download="map_crm_backup.json";a.click();}
 function restore(inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const j=JSON.parse(rd.result);const arr=Array.isArray(j)?j:j.propostas;if(Array.isArray(arr)){persist(arr);if(j.precos)localStorage.setItem("map_precos",JSON.stringify(j.precos));loadPrecos();buildForm();renderKanban();toast("Backup importado");}}catch(e){alert("Arquivo inválido");}};rd.readAsText(f);}
