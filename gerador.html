@@ -62,7 +62,7 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);}
 .kcol{background:#e9ecf1;border-radius:10px;padding:10px;min-height:200px;}
 .kcol h4{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5a6270;display:flex;justify-content:space-between;margin:2px 4px 10px;}
 .kcol h4 .sum{color:var(--navy);}
-.kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}.kcard:active{cursor:grabbing;}.kcard.dragging{opacity:.45;}.kmove{width:100%;margin-top:9px;font-size:11.5px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fbfcfd;color:#33405c;font-weight:600;cursor:pointer;}.kmove:hover{border-color:var(--brass);}
+.kcard{background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px;margin-bottom:9px;cursor:grab;box-shadow:0 1px 2px rgba(20,30,50,.06);}.kcard:active{cursor:grabbing;}.kcard.origem{opacity:.35;}.kcard.ghost{position:fixed;z-index:900;pointer-events:none;margin:0;box-shadow:0 16px 40px -12px rgba(15,23,42,.45);transform:rotate(1.5deg);cursor:grabbing;}body.arrastando{cursor:grabbing;user-select:none;-webkit-user-select:none;}.kcol.dragover{outline:2px dashed var(--brass);outline-offset:2px;background:#e3e7ee;}.kmove{width:100%;margin-top:9px;font-size:11.5px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:#fbfcfd;color:#33405c;font-weight:600;cursor:pointer;}.kmove:hover{border-color:var(--brass);}
 .kcard .cli{font-weight:700;font-size:13.5px;}
 .kcard .sub{font-size:11px;color:#8a94a3;margin-top:2px;}
 .lead-card{cursor:pointer;transition:box-shadow .15s;}.lead-card:hover{box-shadow:0 3px 12px rgba(154,111,48,.22);}.lcontato{font-size:11px;color:#6c7686;margin-top:5px;word-break:break-all;}.lead-ficha .lrow{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid #f0f1f4;font-size:13px;}.lead-ficha .lrow.col{flex-direction:column;gap:5px;}.lead-ficha .lk{min-width:120px;color:#8a94a3;font-size:12px;}.lead-ficha .lv{color:#1f2430;font-weight:500;word-break:break-word;}.lead-ficha .lmsg{background:#f7f8fa;border:1px solid #eceef2;border-radius:8px;padding:10px 12px;line-height:1.6;color:#33405c;white-space:pre-wrap;}.mopt{border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:10px;}.mopt.atual{border-color:var(--brass);background:#fbf7f0;}.mopt-h{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:6px;}.mopt-h span{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#9A6F30;font-weight:600;}.mopt-t{font-size:12.5px;line-height:1.6;color:#4a5261;background:#f7f8fa;border-radius:7px;padding:10px 12px;margin-bottom:8px;white-space:pre-wrap;}.motivos{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.mot{font:inherit;font-size:12.5px;font-weight:600;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;color:#33405c;}.mot:hover{border-color:var(--brass);background:#fbf7f0;}.fup{margin-top:7px;font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:20px;display:inline-block;}.fup.atrasado{background:#fde8e6;color:#b44;}.fup.hoje{background:#fbf1e2;color:#9A6F30;}.fup.futuro{background:#eef0f4;color:#5a6270;}.perda{margin-top:7px;font-size:10.5px;color:#b44;font-style:italic;}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}.tg{font-size:9.5px;padding:2px 7px;border-radius:20px;background:#eef0f4;color:#5a6270;font-weight:600;}.tg-new{background:#fbf1e2;color:#9A6F30;}.kcard .tot{font-weight:700;color:var(--navy);font-size:12.5px;margin-top:6px;}
@@ -928,6 +928,67 @@ function agendarTodos(){
   toast(n?("Régua aplicada a "+n+" negócio(s)"):"Todos já tinham follow-up agendado");
 }
 
+/* ============ ARRASTAR CARDS (mouse e toque, sem depender do HTML5 drag) ============ */
+var DND={ativo:false,id:null,el:null,ghost:null,ox:0,oy:0,col:null,x0:0,y0:0,pronto:false};
+
+function dndInicio(ev){
+  var alvo=ev.target;
+  if(alvo.closest("button, select, input, textarea, a")) return;         // deixa clicar nos controles
+  var card=alvo.closest(".kcard"); if(!card) return;
+  var id=card.getAttribute("data-id"); if(!id) return;
+  var p=ev.touches?ev.touches[0]:ev;
+  DND.id=id; DND.el=card; DND.x0=p.clientX; DND.y0=p.clientY; DND.pronto=true;
+  var r=card.getBoundingClientRect(); DND.ox=p.clientX-r.left; DND.oy=p.clientY-r.top; DND.w=r.width;
+}
+function dndMove(ev){
+  if(!DND.pronto) return;
+  var p=ev.touches?ev.touches[0]:ev;
+  if(!DND.ativo){
+    if(Math.abs(p.clientX-DND.x0)<5 && Math.abs(p.clientY-DND.y0)<5) return;  // clique simples
+    DND.ativo=true;
+    var g=DND.el.cloneNode(true);
+    g.classList.add("ghost");
+    g.style.width=DND.w+"px";
+    document.body.appendChild(g);
+    DND.ghost=g;
+    DND.el.classList.add("origem");
+    document.body.classList.add("arrastando");
+  }
+  ev.preventDefault();
+  DND.ghost.style.left=(p.clientX-DND.ox)+"px";
+  DND.ghost.style.top=(p.clientY-DND.oy)+"px";
+  DND.ghost.style.display="none";
+  var sob=document.elementFromPoint(p.clientX,p.clientY);
+  DND.ghost.style.display="";
+  var col=sob?sob.closest(".kcol"):null;
+  if(col!==DND.col){
+    if(DND.col)DND.col.classList.remove("dragover");
+    DND.col=col;
+    if(col)col.classList.add("dragover");
+  }
+}
+function dndFim(){
+  if(!DND.pronto){return;}
+  var col=DND.col, id=DND.id, era=DND.ativo;
+  if(DND.ghost)DND.ghost.remove();
+  if(DND.el)DND.el.classList.remove("origem");
+  if(col)col.classList.remove("dragover");
+  document.body.classList.remove("arrastando");
+  DND={ativo:false,id:null,el:null,ghost:null,ox:0,oy:0,col:null,x0:0,y0:0,pronto:false};
+  if(era && col && id){
+    var st=col.getAttribute("data-stage");
+    var r=all().find(function(x){return x.id===id;});
+    if(st && r && r.status!==st) setStage(id,st);
+    else renderKanban();
+  }
+}
+document.addEventListener("mousedown",dndInicio);
+document.addEventListener("mousemove",dndMove);
+document.addEventListener("mouseup",dndFim);
+document.addEventListener("touchstart",dndInicio,{passive:true});
+document.addEventListener("touchmove",dndMove,{passive:false});
+document.addEventListener("touchend",dndFim);
+
 /* ---------- CRM ---------- */
 function all(){try{return JSON.parse(localStorage.getItem("map_propostas")||"[]");}catch(e){return [];}}
 function persist(a){localStorage.setItem("map_propostas",JSON.stringify(a));}
@@ -987,13 +1048,13 @@ function renderKanban(){
     const cards=a.filter(r=>r.status===st).sort((x,y)=>y.updated-x.updated);
     const sum=cards.reduce((t,r)=>t+(r.total||0),0);
     const leadsHTML=(st==="Lead"&&LEADS.length)?LEADS.map(l=>`<div class="kcard lead-card" style="border-left:3px solid #9A6F30;background:#fdfaf4" onclick="leadModal('${l.id}')" title="Ver ficha do lead"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#9A6F30;font-weight:700">novo do site</div><div class="cli">${esc(l.nome||"Sem nome")}</div><div class="sub">${esc(l.empresa||"")} ${l.data_evento?"\u00b7 "+esc(l.data_evento):""} ${l.pessoas?"\u00b7 "+l.pessoas+" pax":""}</div>${(l.email||l.telefone||l.contato)?`<div class="lcontato">${l.telefone||l.contato?esc(l.telefone||l.contato):""}${(l.telefone||l.contato)&&l.email?" \u00b7 ":""}${l.email?esc(l.email):""}</div>`:""}${(l.utm_source||l.cidade)?`<div class="tags">${l.cidade?`<span class="tg">${esc(l.cidade)}</span>`:""}${l.utm_source?`<span class="tg tg-new">${esc(l.utm_source)}</span>`:""}</div>`:""}${l.mensagem?`<div class="sub" style="margin-top:4px">${esc(l.mensagem).slice(0,90)}</div>`:""}<div class="ka" onclick="event.stopPropagation()"><button class="mini load" onclick="leadParaProposta('${l.id}')">Criar proposta</button>${l.contato?`<button class="mini" onclick="window.open('https://wa.me/55'+'${(l.contato||"").replace(/\D/g,"")}'.replace(/^55/,''),'_blank')">WhatsApp</button>`:""}<button class="mini del" onclick="leadDescartar('${l.id}')">Descartar</button></div></div>`).join(""):"";
-    const html=leadsHTML+cards.map(r=>`<div class="kcard" draggable="true" ondragstart="drag(event,'${r.id}')" ondragend="dragEnd(event)">
+    const html=leadsHTML+cards.map(r=>`<div class="kcard" data-id="${r.id}">
       <div class="cli">${esc(r.cliente)||"Sem nome"}</div>
       <div class="sub">${esc(r.empresa||"")} ${r.data?"\u00b7 "+esc(r.data):""} ${r.pessoas?"\u00b7 "+r.pessoas+" pax":""}${(r.dias||1)>1?" \u00b7 "+r.dias+" dias":""}</div>${(r.tipoDemanda||r.primeiraCompra||r.local)?`<div class="tags">${r.tipoDemanda?`<span class="tg">${esc(r.tipoDemanda)}</span>`:""}${r.primeiraCompra==="Sim"?`<span class="tg tg-new">1ª compra</span>`:""}${r.local?`<span class="tg">${esc(r.local)}</span>`:""}</div>`:""}
       <div class="tot">${money(r.total||0)}</div>${r.proximoContato&&r.status!=="Fechado"&&r.status!=="Perdido"?`<div class="fup ${fupClasse(r.proximoContato)}">${fupTexto(r.proximoContato)}</div>`:""}${r.status==="Perdido"&&r.motivoPerda?`<div class="perda">${esc(r.motivoPerda)}</div>`:""}
       <select class="kmove" onclick="event.stopPropagation()" onchange="setStage('${r.id}',this.value)">${STAGES.map(x=>`<option ${r.status===x?'selected':''}>${x}</option>`).join("")}</select><div class="ka"><button class="mini load" onclick="loadRec('${r.id}')">Abrir</button><button class="mini" onclick="msgFollow('${r.id}')">Follow-up</button>${r.contato?`<button class="mini" onclick="waQuick('${r.id}')">WhatsApp</button>`:""}<button class="mini del" onclick="delRec('${r.id}')">Excluir</button></div>
     </div>`).join("");
-    return `<div class="kcol" ondragenter="event.preventDefault()" ondragover="event.preventDefault();event.dataTransfer.dropEffect='move';this.classList.add('dragover')" ondragleave="this.classList.remove('dragover')" ondrop="drop(event,'${st}');this.classList.remove('dragover')"><h4>${st} <span class="sum">${cards.length+(st==="Lead"?LEADS.length:0)} \u00b7 ${money(sum)}</span></h4>${html||'<div class="hint" style="padding:6px">vazio</div>'}</div>`;
+    return `<div class="kcol" data-stage="${st}"><h4>${st} <span class="sum">${cards.length+(st==="Lead"?LEADS.length:0)} \u00b7 ${money(sum)}</span></h4>${html||'<div class="hint" style="padding:6px">vazio</div>'}</div>`;
   }).join("");
 }
 var DRAG_ID=null;
